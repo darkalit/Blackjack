@@ -19,10 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\EventSystem.cpp" />
+    <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\EventSystem.h" />
+    <ClInclude Include="Source\Input.h" />
+    <ClInclude Include="Source\InputKey.h" />
     <ClInclude Include="Source\Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
