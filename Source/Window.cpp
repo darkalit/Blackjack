@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <stdexcept>
 
-Window::Window(const std::string& title, int32_t width, int32_t height, WindowFlags flags)
+Window::Window(const std::string& title, const Vec2i& size, WindowFlags flags)
 {
     uint32_t sdlFlags = 0;
     switch (flags)
@@ -25,15 +25,14 @@ Window::Window(const std::string& title, int32_t width, int32_t height, WindowFl
         throw std::runtime_error(std::string("Failed to init SDL video: ") + SDL_GetError());
     }
 
-    m_Window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, sdlFlags);
+    m_Window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, size.x, size.y, sdlFlags);
 
     if (!m_Window)
     {
         throw std::runtime_error(std::string("Failed to create SDL window: ") + SDL_GetError());
     }
 
-    m_Width = width;
-    m_Height = height;
+    m_Size = size;
 }
 
 Window::~Window()
@@ -42,14 +41,19 @@ Window::~Window()
     SDL_Quit();
 }
 
+Vec2i Window::GetSize() const
+{
+    return m_Size;
+}
+
 int32_t Window::GetWidth() const
 {
-    return m_Width;
+    return m_Size.x;
 }
 
 int32_t Window::GetHeight() const
 {
-    return m_Height;
+    return m_Size.y;
 }
 
 void Window::ToggleFullscreen()

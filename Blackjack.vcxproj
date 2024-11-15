@@ -29,6 +29,7 @@
     <ClInclude Include="Source\Input.h" />
     <ClInclude Include="Source\InputKey.h" />
     <ClInclude Include="Source\Window.h" />
+    <ClInclude Include="Source\Vec2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

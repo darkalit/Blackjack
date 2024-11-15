@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "Vec2.h"
+
 struct SDL_Window;
 
 class Window
@@ -14,13 +16,14 @@ public:
         RESIZABLE,
     };
 
-    Window(const std::string& title, int32_t width, int32_t height, WindowFlags flags = NONE);
+    Window(const std::string& title, const Vec2i& size, WindowFlags flags = NONE);
     ~Window();
 
+    Vec2i GetSize() const;
     int32_t GetWidth() const;
     int32_t GetHeight() const;
     void ToggleFullscreen();
-
+        
     int32_t GetMouseX() const;
     int32_t GetMouseY() const;
 
@@ -28,7 +31,7 @@ public:
 
 private:
     SDL_Window* m_Window = nullptr;
-    int32_t m_Width = 0, m_Height = 0;
+    Vec2i m_Size = {};
     bool m_Fullscreen = false;
 };
 
