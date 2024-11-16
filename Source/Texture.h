@@ -6,20 +6,17 @@
 
 struct SDL_Texture;
 
-enum class BlendMode {
-    NONE,
-    BLEND,
-    ADD,
-    MOD,
-    MUL,
-};
-
 class Texture
 {
 public:
     Texture() = default;
     Texture(const std::string& filename);
+    Texture(const Texture&) = delete;
+    Texture(Texture&& other) noexcept;
     ~Texture();
+
+    Texture& operator=(const Texture&) = delete;
+    Texture& operator=(Texture&& other) noexcept;
 
     bool Load(const std::string& filename);
     void SetColor(uint8_t r, uint8_t g, uint8_t b);

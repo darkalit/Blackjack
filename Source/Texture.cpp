@@ -11,6 +11,26 @@ Texture::Texture(const std::string& filename)
     Load(filename);
 }
 
+Texture::Texture(Texture&& other) noexcept
+{
+    m_Texture = other.m_Texture;
+    other.m_Texture = nullptr;
+    m_Size = other.m_Size;
+    other.m_Size = {};
+}
+
+Texture& Texture::operator=(Texture&& other) noexcept
+{
+    if (this != &other)
+    {
+        Release();
+        std::swap(m_Texture, other.m_Texture);
+        m_Size = other.m_Size;
+    }
+
+    return *this;
+}
+
 Texture::~Texture()
 {
     Release();
