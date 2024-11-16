@@ -11,6 +11,9 @@ class Texture;
 class Renderer
 {
 public:
+    Renderer() = delete;
+    ~Renderer() = delete;
+
     static void Init(const Window& window, const Vec2i& size = {});
     static void Destroy();
 
