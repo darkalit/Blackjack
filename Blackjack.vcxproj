@@ -23,6 +23,7 @@
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\ResourceManager.cpp" />
     <ClCompile Include="Source\Texture.cpp" />
     <ClCompile Include="Source\Window.cpp" />
   </ItemGroup>
@@ -31,6 +32,7 @@
     <ClInclude Include="Source\Input.h" />
     <ClInclude Include="Source\InputKey.h" />
     <ClInclude Include="Source\Renderer.h" />
+    <ClInclude Include="Source\ResourceManager.h" />
     <ClInclude Include="Source\Texture.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Vec2.h" />
