@@ -13,12 +13,12 @@ GameObject& GameObject::operator=(const GameObject& other)
     return *this;
 }
 
-void GameObject::SetSize(const Vec2i& size)
+void GameObject::SetSize(const Vec2d& size)
 {
     m_Size = size;
 }
 
-Vec2i GameObject::GetSize() const
+Vec2d GameObject::GetSize() const
 {
     return m_Size;
 }

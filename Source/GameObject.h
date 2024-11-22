@@ -10,8 +10,8 @@ public:
     virtual void Update(double dt) = 0;
     virtual void Draw() = 0;
 
-    virtual void SetSize(const Vec2i& size);
-    virtual Vec2i GetSize() const;
+    virtual void SetSize(const Vec2d& size);
+    virtual Vec2d GetSize() const;
 
     bool IsIntersecting(const Vec2d& point) const;
 
@@ -19,6 +19,6 @@ public:
     double Angle = 0.0;
 
 protected:
-    Vec2i m_Size = {};
+    Vec2d m_Size = {};
 };
 
