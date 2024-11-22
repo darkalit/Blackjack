@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\EventSystem.cpp" />
+    <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\EventSystem.h" />
+    <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\Input.h" />
     <ClInclude Include="Source\InputKey.h" />
     <ClInclude Include="Source\Renderer.h" />
