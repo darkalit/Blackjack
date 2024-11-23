@@ -27,6 +27,6 @@ public:
     static SDL_Renderer* GetHandle();
 
 private:
-    static SDL_Renderer* m_Renderer;
+    static SDL_Renderer* s_Renderer;
 };
 
