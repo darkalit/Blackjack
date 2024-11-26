@@ -24,8 +24,11 @@
     <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Mixer.cpp" />
+    <ClCompile Include="Source\Music.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
     <ClCompile Include="Source\ResourceManager.cpp" />
+    <ClCompile Include="Source\Sound.cpp" />
     <ClCompile Include="Source\Texture.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Window.cpp" />
@@ -36,8 +39,11 @@
     <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\Input.h" />
     <ClInclude Include="Source\InputKey.h" />
+    <ClInclude Include="Source\Mixer.h" />
+    <ClInclude Include="Source\Music.h" />
     <ClInclude Include="Source\Renderer.h" />
     <ClInclude Include="Source\ResourceManager.h" />
+    <ClInclude Include="Source\Sound.h" />
     <ClInclude Include="Source\Texture.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Window.h" />
@@ -96,20 +102,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>$(ProjectDir)External\SDL2_Image\Lib\x64;$(ProjectDir)External\SDL2\Lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
+    <LibraryPath>$(ProjectDir)External\SDL2_Mixer\Lib\x64;$(ProjectDir)External\SDL2_Image\Lib\x64;$(ProjectDir)External\SDL2\Lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\SDL2_Mixer\Include;$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>$(ProjectDir)External\SDL2_Image\Lib\x64;$(ProjectDir)External\SDL2\Lib\x64;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
+    <LibraryPath>$(ProjectDir)External\SDL2_Mixer\Lib\x64;$(ProjectDir)External\SDL2_Image\Lib\x64;$(ProjectDir)External\SDL2\Lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\SDL2_Mixer\Include;$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(SolutionDir)External\SDL2_Image\Lib\x86;$(SolutionDir)External\SDL2\Lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
+    <LibraryPath>$(ProjectDir)External\SDL2_Mixer\Lib\x86;$(ProjectDir)External\SDL2_Image\Lib\x86;$(ProjectDir)External\SDL2\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\SDL2_Mixer\Include;$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>$(SolutionDir)External\SDL2_Image\Lib\x86;$(SolutionDir)External\SDL2\Lib\x86;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
+    <LibraryPath>$(ProjectDir)External\SDL2_Mixer\Lib\x86;$(ProjectDir)External\SDL2_Image\Lib\x86;$(ProjectDir)External\SDL2\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)External\SDL2_Mixer\Include;$(ProjectDir)External\SDL2_Image\Include;$(ProjectDir)External\SDL2\Include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -118,15 +124,17 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x86\*.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
     </PostBuildEvent>
@@ -141,6 +149,7 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,10 +158,11 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x86\*.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
     </PostBuildEvent>
@@ -165,16 +175,18 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x64\*.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
     </PostBuildEvent>
@@ -189,6 +201,7 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -197,10 +210,11 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x64\*.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
     </PostBuildEvent>
