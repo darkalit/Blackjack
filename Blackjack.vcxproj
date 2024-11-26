@@ -22,6 +22,7 @@
     <ClCompile Include="Source\Button.cpp" />
     <ClCompile Include="Source\Card.cpp" />
     <ClCompile Include="Source\EventSystem.cpp" />
+    <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameObject.cpp" />
     <ClCompile Include="Source\GameOverUI.cpp" />
     <ClCompile Include="Source\GameUI.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="Source\Button.h" />
     <ClInclude Include="Source\Card.h" />
     <ClInclude Include="Source\EventSystem.h" />
+    <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameObject.h" />
     <ClInclude Include="Source\GameOverUI.h" />
     <ClInclude Include="Source\GameUI.h" />

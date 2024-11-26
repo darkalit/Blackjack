@@ -45,6 +45,9 @@
     <ClCompile Include="Source\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\Button.h">
