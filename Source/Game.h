@@ -79,7 +79,8 @@ private:
     State m_OldState = State::MENU;
     State m_NewState = State::MENU;
 
-    int32_t m_Cash = 1500;
+    int32_t m_MaxCash = 250;
+    int32_t m_Cash = m_MaxCash;
     int32_t m_Bet = 0;
 
     int32_t m_MaxPoints = 21;

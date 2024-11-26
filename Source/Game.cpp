@@ -128,7 +128,7 @@ void Game::Init()
             Mixer::Play(*m_ButtonPress);
             SetState(State::RESET_DECKS);
             m_Bet = 0;
-            m_Cash = 1500;
+            m_Cash = m_MaxCash;
         });
     m_GameOverUI.SetOnMenu([this]
         {
@@ -142,7 +142,7 @@ void Game::Init()
             ResetDecks();
             SetState(State::BET);
             m_Bet = 0;
-            m_Cash = 1500;
+            m_Cash = m_MaxCash;
         });
     m_MenuUI.SetOnExit([this]
         {
