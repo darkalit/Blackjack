@@ -152,7 +152,7 @@
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x86\*.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
+xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -180,7 +180,7 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x86\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x86\*.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
+xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -204,7 +204,7 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x64\*.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
+xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -232,7 +232,7 @@ xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
       <Command>xcopy /y /d "$(SolutionDir)\External\SDL2\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Mixer\Lib\x64\*.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)\External\SDL2_Image\Lib\x64\*.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i</Command>
+xcopy /y /d "$(SolutionDir)\Assets" "$(OutDir)\Assets" /i /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
