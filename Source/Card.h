@@ -47,7 +47,7 @@ public:
         LAST = ACE,
     };
 
-    Card(const Vec2d& pos, const Vec2d& size, Suit suit, Rank rank);
+    Card(Texture*& textureP, const Vec2d& pos, const Vec2d& size, Suit suit, Rank rank);
 
     Card(const Card& other) = default;
     Card& operator=(const Card& other);
@@ -75,7 +75,7 @@ private:
     State m_NewState = State::FLIPPED;
     double m_T = 0.0;
 
-    Texture* m_Texture = nullptr;
+    Texture** m_Texture = nullptr;
 
     static double s_MoveAnimTime;
     static double s_FlipAnimTime;

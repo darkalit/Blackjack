@@ -7,7 +7,7 @@
 double Card::s_MoveAnimTime = 0.4;
 double Card::s_FlipAnimTime = 0.04;
 
-Card::Card(const Vec2d& pos, const Vec2d& size, Suit suit, Rank rank)
+Card::Card(Texture*& textureP, const Vec2d& pos, const Vec2d& size, Suit suit, Rank rank)
     : BasePos(pos)
     , m_Suit(suit)
     , m_Rank(rank)
@@ -15,7 +15,7 @@ Card::Card(const Vec2d& pos, const Vec2d& size, Suit suit, Rank rank)
     m_Size = size;
     Pos = pos;
 
-    m_Texture = &ResourceManager::AddTexture("Assets/cards.png");
+    m_Texture = &textureP;
 }
 
 Card& Card::operator=(const Card& other)
@@ -106,14 +106,14 @@ void Card::Draw()
         break;
     }
 
-    Renderer::Draw(*m_Texture, Pos, GetSize(), Angle, &clip);
+    Renderer::Draw(**m_Texture, Pos, GetSize(), Angle, &clip);
 }
 
 Vec2d Card::GetSize() const
 {
     if (m_Size == Vec2i{})
     {
-        return m_Texture->GetSize();
+        return (*m_Texture)->GetSize();
     }
     return m_Size;
 }
@@ -196,7 +196,7 @@ Card::State Card::GetState() const
 SDL_Rect Card::GetClip(bool back) const
 {
     Vec2i cardsCount = { 13, 5 };
-    Vec2i cardSize = { m_Texture->GetSize().x / cardsCount.x, m_Texture->GetSize().y / cardsCount.y };
+    Vec2i cardSize = { (*m_Texture)->GetSize().x / cardsCount.x, (*m_Texture)->GetSize().y / cardsCount.y };
 
     if (back)
     {
