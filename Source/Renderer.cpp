@@ -3,10 +3,12 @@
 #include <iostream>
 #include <SDL.h>
 
+#include "ResourceManager.h"
 #include "Vec2.h"
 #include "Texture.h"
 #include "Window.h"
 
+Texture* Renderer::s_NumTexture = nullptr;
 SDL_Renderer* Renderer::s_Renderer = nullptr;
 
 void Renderer::Init(const Window& window, const Vec2i& size)
@@ -29,6 +31,9 @@ void Renderer::Init(const Window& window, const Vec2i& size)
     {
         SDL_RenderSetLogicalSize(s_Renderer, size.x, size.y);
     }
+
+
+    s_NumTexture = &ResourceManager::AddTexture("Assets/numbers.png");
 }
 
 void Renderer::Destroy()
@@ -50,8 +55,22 @@ void Renderer::Flush()
     SDL_RenderPresent(s_Renderer);
 }
 
+void Renderer::Draw(int32_t number, const Vec2i& pos)
+{
+    std::string numStr = std::to_string(number);
+    for (int32_t i = 0; i < numStr.size(); ++i)
+    {
+        int32_t digit = numStr[i] - '0';
+
+        SDL_Rect clip = { 11 * digit, 0, 11, 14 };
+        Draw(*s_NumTexture, { 11 * i + pos.x, pos.y}, 0, &clip);
+    }
+}
+
 void Renderer::Draw(const Texture& texture, const Vec2i& pos, double angle, SDL_Rect* clip)
 {
+    if (!texture.GetHandle())
+        return;
     SDL_Rect rect = { pos.x, pos.y, texture.GetWidth(), texture.GetHeight() };
     if (clip)
     {
@@ -65,6 +84,7 @@ void Renderer::Draw(const Texture& texture, const Vec2i& pos, double angle, SDL_
 
 void Renderer::Draw(const Texture& texture, const Vec2i& pos, const Vec2i& size, double angle, const SDL_Rect* clip)
 {
+    if (!texture.GetHandle()) return;
     SDL_Rect rect = { pos.x, pos.y, size.x, size.y };
     const double dAngle = angle * 180.0 / M_PI;
 
@@ -73,6 +93,7 @@ void Renderer::Draw(const Texture& texture, const Vec2i& pos, const Vec2i& size,
 
 void Renderer::Draw(const Texture& texture, const SDL_Rect* clip)
 {
+    if (!texture.GetHandle()) return;
     SDL_RenderCopyEx(s_Renderer, texture.GetHandle(), clip, nullptr, 0.0, nullptr, SDL_FLIP_NONE);
 }
 
