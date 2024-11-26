@@ -20,7 +20,7 @@ void ResultsUI::Update(double dt, Outcome outcome)
     m_Outcome = outcome;
 
     if (m_T <= 1.0) {
-        m_T += dt * 2;
+        m_T += dt * 0.75;
         Pos.y = m_RenderSize.y * (m_T < 0.5 ? 0.5 - std::pow(0.84 - m_T, 4) : 0.5 + std::pow(0.16 - m_T, 4));
     } else
     {

@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include <iostream>
+#include <SDL_timer.h>
 
 #include "Input.h"
 #include "Mixer.h"
@@ -180,6 +181,7 @@ void Game::Tick()
     m_FrameTime = m_Timer.Dt();
     while (m_FrameTime > 0.0) {
         Update();
+        SDL_Delay(16);
     }
 
     Draw();
@@ -192,7 +194,7 @@ void Game::ProcessInput()
 
 void Game::Update()
 {
-    double deltaTime = std::min(m_FrameTime, m_Dt);
+    double deltaTime = m_Dt;
     m_DealerPoints = CalculatePoints(m_DealerDeck);
     m_PlayerPoints = CalculatePoints(m_PlayerDeck);
 
@@ -389,6 +391,8 @@ void Game::Draw()
     case State::GAME_OVER:
         m_GameOverUI.Draw();
         break;
+    case State::RESULTS:
+        m_ResultsUI.Draw();
     case State::BET:
     case State::IDLE:
     case State::RESET_DECKS:
@@ -396,10 +400,8 @@ void Game::Draw()
     case State::DEALER_REFILL:
     case State::PLAYER_HIT:
     case State::PLAYER_REFILL:
+    case State::PLAYER_STAND:
         m_GameUI.Draw(m_Bet, m_Cash);
-        break;
-    case State::RESULTS:
-        m_ResultsUI.Draw();
         break;
 
     default:
