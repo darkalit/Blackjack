@@ -27,9 +27,12 @@ public:
     Vec2i GetSize() const;
     int32_t GetWidth() const;
     int32_t GetHeight() const;
+    std::string GetFilename() const;
 
 private:
     void Release();
+
+    std::string m_Filename;
 
     SDL_Texture* m_Texture = nullptr;
 

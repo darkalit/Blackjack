@@ -15,6 +15,7 @@ Texture::Texture(Texture&& other) noexcept
 {
     m_Texture = other.m_Texture;
     other.m_Texture = nullptr;
+    m_Filename = std::move(other.m_Filename);
     m_Size = other.m_Size;
     other.m_Size = {};
 }
@@ -26,6 +27,7 @@ Texture& Texture::operator=(Texture&& other) noexcept
         Release();
         std::swap(m_Texture, other.m_Texture);
         m_Size = other.m_Size;
+        m_Filename = std::move(other.m_Filename);
     }
 
     return *this;
@@ -40,6 +42,7 @@ bool Texture::Load(const std::string& filename)
 {
     Release();
 
+    m_Filename = filename;
     SDL_Surface* surface = IMG_Load(filename.c_str());
     if (!surface)
     {
@@ -92,11 +95,17 @@ int32_t Texture::GetHeight() const
     return m_Size.y;
 }
 
+std::string Texture::GetFilename() const
+{
+    return m_Filename;
+}
+
 void Texture::Release()
 {
     if (m_Texture)
     {
         SDL_DestroyTexture(m_Texture);
+        m_Filename = "";
         m_Texture = nullptr;
         m_Size = {};
     }
